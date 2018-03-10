@@ -1,0 +1,7 @@
+.snap {display:inline-block;margin:5px;text-align:center;}
+.snap img {width:300px}
+
+a.save {color:green}
+a.delete {color:red}
+
+a.save:hover, a.delete:hover {color:blue; text-decoration:underline}

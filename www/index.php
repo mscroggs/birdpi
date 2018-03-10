@@ -1,15 +1,14 @@
-<html>
-<head>
-<title>Birdpi</title>
-<link rel='stylesheet' type='text/css' src='sty.css'>
-</head>
-<body>
-<div class='header'>
 <?php
-
-echo "Hello there";
-
+include("intro.php");
 ?>
-
-</body>
-</html>
+<h1>Recent snaps</h1>
+<?php
+$files = glob('snaps/*.jpg');
+foreach(array_slice($files,-5) as $file) {
+    show_snap($file);
+}
+?>
+<h1>Saved pictures</h1>
+<?php
+include("outro.php");
+?>
