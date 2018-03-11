@@ -2,6 +2,7 @@
 include("intro.php");
 ?>
 <h1>Recent snaps</h1>
+<div class='allink'><a href='/all.php'>Show all</a></div>
 <?php
 $files = glob('snaps/*.jpg');
 foreach(array_slice($files,-5) as $file) {
