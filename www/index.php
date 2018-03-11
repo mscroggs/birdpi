@@ -8,7 +8,7 @@ foreach(array_slice($files,-5) as $file) {
     show_snap($file);
 }
 ?>
-<h1>Saved pictures</h1>
+<h1>Recently saved pictures</h1>
 <?php
 include("outro.php");
 ?>
