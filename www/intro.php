@@ -12,6 +12,16 @@ function show_snap($file){
     echo("</div>");
 }
 
+function show_saved_snap($file){
+    echo("<div class='snap' id='".$file."'>");
+    echo("<a href='javascript:enlarge(\"".$file."\")'><img src='".$file."'></a>");
+    echo("<br />");
+    echo("<a href='javascript:enlarge(\"".$file."\")'>enlarge</a>");
+    echo(" &nbsp; ");
+    echo("<a class='delete' href='javascript:delImg(\"".$file."\")'>delete</a>");
+    echo("</div>");
+}
+
 ?>
 
 <script type='text/javascript'>
@@ -23,11 +33,35 @@ function hideImg(){
     document.getElementById("bigi").style.display = "none"
 }
 function saveImg(fn){
-    document.getElementById(fn).innerHTML = "<a href='javascript:enlarge(\""+fn+"\")'><img src='"+fn+"'></a><br /><span style='color:green'>saved</span>"
-    
+    document.getElementById(fn).innerHTML = "<a href='javascript:enlarge(\""+fn+"\")'><img src='"+fn+"'></a><br />..."
+    var saver;
+    if(window.XMLHttpRequest){saver=new XMLHttpRequest();}
+    else {saver=new ActiveXObject('Microsoft.XMLHTTP');}
+    saver.onreadystatechange=function(){
+        if (saver.readyState==4 && saver.status==200){
+            document.getElementById(fn).innerHTML = "<a href='javascript:enlarge(\""+fn+"\")'><img src='"+fn+"'></a><br /><span style='color:green'>saved</span>"
+        }
+    }
+    saver.open('POST','saver.php');
+    saver.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    saver.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    saver.send("f="+fn);
+
 }
 function delImg(fn){
-    document.getElementById(fn).style.display='none'
+    document.getElementById(fn).innerHTML = "<a href='javascript:enlarge(\""+fn+"\")'><img src='"+fn+"'></a><br />..."
+    var deleter;
+    if(window.XMLHttpRequest){deleter=new XMLHttpRequest();}
+    else {deleter=new ActiveXObject('Microsoft.XMLHTTP');}
+    deleter.onreadystatechange=function(){
+        if (deleter.readyState==4 && deleter.status==200){
+            document.getElementById(fn).style.display='none'
+        }
+    }
+    deleter.open('POST','deleter.php');
+    deleter.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    deleter.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    deleter.send("f="+fn);
 }
 </script>
 

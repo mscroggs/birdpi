@@ -13,7 +13,7 @@ foreach(array_slice($files,-5) as $file) {
 <?php
 $files = glob('saved/*.jpg');
 foreach(array_slice($files,-5) as $file) {
-    show_snap($file);
+    show_saved_snap($file);
 }
 
 include("outro.php");
