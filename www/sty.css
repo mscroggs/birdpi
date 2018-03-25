@@ -2,10 +2,13 @@
 .snap img {width:300px}
 
 a {text-decoration:none}
+a:hover {text-decoration:underline}
 a.save {color:green}
 a.delete {color:red}
 
-a.save:hover, a.delete:hover {color:blue; text-decoration:underline}
+a.save:hover, a.delete:hover {color:blue}
+
+.navi {text-align:center;margin-top:20px}
 
 .header {width:100%;margin:-10px;background-color:skyblue;padding:5px;height:83px;border-bottom:5px solid black}
 .header .title {margin-left:15px;position:relative;top:-35px;font-size:60px;font-family:Lato}
@@ -17,3 +20,6 @@ h1,h2,h3,h4,h5,h6 {font-family:Lato}
 h1 {margin-top:30px;margin-bottom:5px}
 
 .allink {}
+
+.bigi {display:none;position:fixed;top:0;bottom:0;right:0;left:0;text-align:center;overflow:scroll}
+.bigimg {height:100%}

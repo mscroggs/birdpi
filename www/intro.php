@@ -1,14 +1,35 @@
 <?php
 
 function show_snap($file){
-    echo("<div class='snap'>");
-    echo("<img src='".$file."'>");
+    echo("<div class='snap' id='".$file."'>");
+    echo("<a href='javascript:enlarge(\"".$file."\")'><img src='".$file."'></a>");
     echo("<br />");
-    echo("<a class='save'>save</a> &nbsp; <a class='delete'>delete</a>");
+    echo("<a href='javascript:enlarge(\"".$file."\")'>enlarge</a>");
+    echo(" &nbsp; ");
+    echo("<a class='save' href='javascript:saveImg(\"".$file."\")'>save</a>");
+    echo(" &nbsp; ");
+    echo("<a class='delete' href='javascript:delImg(\"".$file."\")'>delete</a>");
     echo("</div>");
 }
 
 ?>
+
+<script type='text/javascript'>
+function enlarge(fn){
+    document.getElementById("bigimg").src = fn
+    document.getElementById("bigi").style.display = "block"
+}
+function hideImg(){
+    document.getElementById("bigi").style.display = "none"
+}
+function saveImg(fn){
+    document.getElementById(fn).innerHTML = "<a href='javascript:enlarge(\""+fn+"\")'><img src='"+fn+"'></a><br /><span style='color:green'>saved</span>"
+    
+}
+function delImg(fn){
+    document.getElementById(fn).style.display='none'
+}
+</script>
 
 <html>
 <head>
@@ -24,3 +45,4 @@ function show_snap($file){
 <span class='title'>Birdpi</span> 
 <span class='links'><a href='/'>main page</a></span>
 </div>
+<div class='bigi' onclick='hideImg()' id='bigi'><img id='bigimg'></div>

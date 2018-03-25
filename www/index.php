@@ -11,5 +11,10 @@ foreach(array_slice($files,-5) as $file) {
 ?>
 <h1>Recently saved pictures</h1>
 <?php
+$files = glob('saved/*.jpg');
+foreach(array_slice($files,-5) as $file) {
+    show_snap($file);
+}
+
 include("outro.php");
 ?>
