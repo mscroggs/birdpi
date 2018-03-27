@@ -1,3 +1,4 @@
+from __future__ import print_function
 import tweet
 import os
 import json
@@ -38,6 +39,7 @@ for filename in os.listdir("www/saved"):
         text += " on "+day+" "+month_as_word(month)+" "+year
         tweet.send_tweet(file, text)
         done.append(filename)
+        print(filename, text)
         with open("done.json","w") as f:
             json.dump(done,f)
         break
