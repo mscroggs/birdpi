@@ -2,3 +2,5 @@ www/snaps/*
 www/saved/*
 .*.swp
 login.json
+done.json
+*.pyc
